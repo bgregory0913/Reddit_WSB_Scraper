@@ -12,11 +12,11 @@ _This project is an example of using Reddit’s PRAW API to read posts from the 
 
 The tool was written with Python in Jupyter Notebook and uses the SMTP library and MIME module to send an email containing the top mentioned stocks.
 
-  * First, a connection is made to Reddit's Python API (PRAW) using the API key reddit provides when you create a developer account.
+  * First, a connection is made to Reddit's Python API (PRAW) using the API key reddit provides when you create a developer account (click [here](https://www.reddit.com/wiki/api) for more information on creating your developer account and Reddit API Key). You must create a .env file to store your API key and load it with the os.getenv() function, or you can simply hardcode your API in the script if you don't plan on posting it on GitHub.
   * Then we loop through the 'wallstreetbets' subreddit and append the title and content of the first 500 posts to a pandas DataFrame.
   * Next, we loop through each post and merge the post's title and content. After that, another loop to iterate through each word in the post and exclude a list of pre-defined "stop words" (and not the NLP stopwords I'll mention in another post). These would be words we don't care about and just want to toss out.
   * Finally, the words are appended to a dictionary and the process is repeated for every post; additionally, when a repeated word is added to the dictionary, it's "frequency" count is increased by 1.
-  * Once this is all complete, the data is put into a DataFrame and sent to an email address securely through a TLS connection.
+  * Once this is all complete, the data is put into a DataFrame and sent to an email address securely through a TLS connection. Once again, the email function of this script stores the SENDER_ADDRESS, SENDER_PASSWORD, AND RECEIVER_ADDRESS, in the same .env file as the Reddit API key and are loaded with the .getenv() function (do this for security if you are to ever share your script).
 
 
 ### Built With:
